@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>723017694284-db4p60de1904jmtah2c7ocan0pt9f9e0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.723017694284-db4p60de1904jmtah2c7ocan0pt9f9e0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGLK1KnNXikQHXMypWv4sfabmqUgmOYsU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>723017694284</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>CeriOS.iOS-persian2</string>
+	<key>PROJECT_ID</key>
+	<string>trackr-13909</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trackr-13909.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:723017694284:ios:8f623c05a7373764</string>
+	<key>DATABASE_URL</key>
+	<string>https://trackr-13909.firebaseio.com</string>
+</dict>
+</plist>
