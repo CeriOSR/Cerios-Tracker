@@ -11,6 +11,7 @@ import Firebase
 
 class AddUserController: UIViewController {
     
+    let driver = User()
     let uid = FIRAuth.auth()?.currentUser?.uid
     var tracker: User? {
         didSet{
@@ -82,46 +83,47 @@ class AddUserController: UIViewController {
     }
     
     func handleAddUser() {
-        
-        //find the user in pending node
-        
-        //add them under their tracker id in company_driver node and update the trackerId in the usernode
-        
-        //delete them from the pending_user node
-        
-        
+        checkIfEmailTextFieldIsEmpty()
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
         guard let email = emailTextField.text else {
             createAlert(title: "Enter a valid email", message: "Please enter a valid email.")
             return
         }
-        let pendingRef = FIRDatabase.database().reference().child("pending_users")
-        //fix this here so it only adds the driver with the corresponding email....
+        let pendingRef = FIRDatabase.database().reference().child("pending_drivers")
         pendingRef.observe(.childAdded, with: { (snapshot) in
-            let pendingDictionary = snapshot.value as? [String: AnyObject]
-            let pendingUser = User()
-            pendingUser.email = pendingDictionary?["email"] as? String
-            pendingUser.fbId = pendingDictionary?["fbId"] as? String
-            pendingUser.userId = snapshot.key
-            
-            if email == pendingUser.email {
-                guard let addUserId = pendingUser.userId else {return}
-                guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
-                let userRef = FIRDatabase.database().reference().child("user").child(addUserId)
-                userRef.updateChildValues(["trackerId": uid])
+            self.driver.email = snapshot.value as? String
+            self.driver.userId = snapshot.key
+            guard let driverId = self.driver.userId else {return}
+            if email == snapshot.value as? String {
+                let userRef = FIRDatabase.database().reference().child("users").child(driverId)
                 userRef.updateChildValues(["trackerId": uid], withCompletionBlock: { (error, reference) in
                     if error != nil {
                         print(error ?? "unknown error!")
                         return
                     }
-                    let fanRef = FIRDatabase.database().reference().child("company_drivers").child("\(uid)")
-                    fanRef.updateChildValues([addUserId:1])
-                    pendingRef.removeValue()
-                    self.handleBack()
+                    self.removeFromPendingAndAddToDispatcherUID(uid: uid)
                 })
-            } else {
-                self.createAlert(title: "Driver Does Not Exist.", message: "Driver mail not found.")
             }
         }, withCancel: nil)
+    }
+    
+    func checkIfEmailTextFieldIsEmpty() {
+        if emailTextField.text == "" || emailTextField.text == nil {
+            createAlert(title: "Invalid Entry.", message: "Please enter a valid email address.")
+        }
+    }
+    
+    func removeFromPendingAndAddToDispatcherUID(uid: String) {
+        
+        //guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
+        if let driverId = driver.userId {
+            let companyDriversFanRef = FIRDatabase.database().reference().child("company_drivers").child("\(uid)")
+            companyDriversFanRef.updateChildValues([driverId: 1])
+            let pendingFanRef = FIRDatabase.database().reference().child("pending_drivers").child(driverId)
+            pendingFanRef.removeValue()
+            self.createAlert(title: "Driver Added", message: "Check him in your list of drivers.")
+            //pendingFanRef.updateChildValues([driverId: "remove me please!!!!"])
+        }
     }
     
     func handleBack() {

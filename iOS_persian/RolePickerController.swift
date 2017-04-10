@@ -52,9 +52,10 @@ class RolePickerController: UIViewController {
                 return
             }
             if trackerId == "Pending dispatcher acceptance" {
-                let fanRef = FIRDatabase.database().reference().child("pending_drivers").child("\(uid)")
-                let fanValues = ["email": values["email"], "fbId": values["fbId"]]
-                fanRef.updateChildValues(fanValues as! [String: String])
+                let fanRef = FIRDatabase.database().reference().child("pending_drivers")//.child(email)
+//                let fanValues = ["driverId": uid, "fbId": values["fbId"]]
+//                fanRef.updateChildValues(fanValues as! [String: String])
+                fanRef.updateChildValues([uid: email])
             } else {
                 
             }
