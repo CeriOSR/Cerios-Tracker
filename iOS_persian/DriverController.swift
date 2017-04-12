@@ -76,7 +76,7 @@ class DriverController: UIViewController, MKMapViewDelegate, CLLocationManagerDe
             //self.pingLocButton.setTitle("Ping Location", for: .normal)
             self.handleRemoveLocEntry()
         } else  {
-            FIRDatabase.database().reference().child("user").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 let dictionary = snapshot.value as? [String: AnyObject]
                 self.trackerId = dictionary?["trackerId"] as! String
                 if self.trackerId == "Pending dispatcher acceptance" {
