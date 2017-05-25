@@ -12,6 +12,13 @@ import FBSDKLoginKit
 
 class TrackerController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var rootViewController = RootViewController()
+    var user: User? {
+        didSet{
+            navigationItem.title = user?.name
+            print("tracker", user?.name)
+        }
+    }
     var timer = Timer()
     var drivers = [User]()
     let cellId = "cellId"
@@ -21,19 +28,21 @@ class TrackerController: UICollectionViewController, UICollectionViewDelegateFlo
     let uid = FIRAuth.auth()?.currentUser?.uid
     var isPinged = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.backgroundColor = .white
         collectionView?.register(DispatcherCell.self, forCellWithReuseIdentifier: cellId)
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add User", style: .plain, target: self, action: #selector(handleAddUserBarButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleMessageView))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         fetchDrivers()
     }
-    
+        
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -123,20 +132,33 @@ class TrackerController: UICollectionViewController, UICollectionViewDelegateFlo
         present(navController, animated: true, completion: nil)
     }
     
-    func handleAddUserBarButton() {
-        let addUserController = AddUserController()
-        let navController = UINavigationController(rootViewController: addUserController)
-        present(navController, animated: true, completion: nil)
+    func handleMessageView() {
+        let layout = UICollectionViewFlowLayout()
+        print("handleMessage function", user?.email)
+
+        guard let currentUser = user else {return}
+        let messageViewController = MessageViewController(collectionViewLayout: layout)
+        messageViewController.currentUser = currentUser
+        messageViewController.trackerController = self
+        let messageNavController = UINavigationController(rootViewController: messageViewController)
+        self.present(messageNavController, animated: true, completion: nil)
+        
+//        let layout = UICollectionViewFlowLayout()
+//        let controller = MessageViewController(collectionViewLayout: layout)
+//        controller.user = user
+//        controller.trackerController = self
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func fetchDrivers() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
         drivers = []
-        let databaseRef = FIRDatabase.database().reference().child("company_drivers").child("\(uid)");        databaseRef.observe(.childAdded, with: { (snapshot) in
+        let databaseRef = FIRDatabase.database().reference().child("company_drivers").child("\(uid)")
+        databaseRef.observe(.childAdded, with: { (snapshot) in
             
             self.driverId = snapshot.key
             self.driversId.append(snapshot.key)
-            let userRef = FIRDatabase.database().reference().child("user").child(self.driverId)
+            let userRef = FIRDatabase.database().reference().child("users").child(self.driverId)
             userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {return}

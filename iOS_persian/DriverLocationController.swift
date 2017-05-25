@@ -36,6 +36,7 @@ class DriverLocationController: UIViewController, MKMapViewDelegate, CLLocationM
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Chat", style: .plain, target: self, action: #selector(pushChatController))
         fetchCoordinates()
         setupView()
         setupLocationManager()
@@ -55,6 +56,13 @@ class DriverLocationController: UIViewController, MKMapViewDelegate, CLLocationM
         
     }
 
+//    func pushChatController() {
+//        let layout = UICollectionViewFlowLayout()
+//        let chatViewController = ChatViewController(collectionViewLayout: layout)
+//        let navController = UINavigationController(rootViewController: chatViewController)
+//        self.present(navController, animated: true, completion: nil)
+//        
+//    }
 
     func handleBack() {
         locationManager.stopUpdatingLocation()

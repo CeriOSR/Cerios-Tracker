@@ -54,6 +54,12 @@
 		E06B5B391E95BC1100A5DAC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B5B381E95BC1100A5DAC3 /* GoogleService-Info.plist */; };
 		E06B5B3A1E95BC1100A5DAC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B5B381E95BC1100A5DAC3 /* GoogleService-Info.plist */; };
 		E06B5B3B1E95BC1100A5DAC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E06B5B381E95BC1100A5DAC3 /* GoogleService-Info.plist */; };
+		E0D5CB3E1ED5FF9D00FF3846 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */; };
+		E0D5CB3F1ED5FF9D00FF3846 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */; };
+		E0D5CB401ED5FF9D00FF3846 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */; };
+		E0D5CB421ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
+		E0D5CB431ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
+		E0D5CB441ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +115,8 @@
 		E06B5B301E95BA9B00A5DAC3 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E06B5B341E95BAEF00A5DAC3 /* TrackerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerController.swift; sourceTree = "<group>"; };
 		E06B5B381E95BC1100A5DAC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E0D5CB411ED6291600FF3846 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +205,6 @@
 				E06B5AE71E95B9AB00A5DAC3 /* LaunchScreen.storyboard */,
 				E06B5AEA1E95B9AB00A5DAC3 /* Info.plist */,
 				E06B5AE21E95B9AB00A5DAC3 /* iOS_persian.xcdatamodeld */,
-				E06B5B341E95BAEF00A5DAC3 /* TrackerController.swift */,
 			);
 			path = iOS_persian;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 		E06B5B3C1E95BDB000A5DAC3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E06B5B341E95BAEF00A5DAC3 /* TrackerController.swift */,
 				E06B5ADD1E95B9AB00A5DAC3 /* ViewController.swift */,
 				E06B5B0C1E95BA2B00A5DAC3 /* AddUserController.swift */,
 				E06B5B141E95BA3F00A5DAC3 /* DriverController.swift */,
@@ -231,6 +239,8 @@
 				E06B5B281E95BA7F00A5DAC3 /* RegisterController.swift */,
 				E06B5B301E95BA9B00A5DAC3 /* RootViewController.swift */,
 				E06B5B2C1E95BA8F00A5DAC3 /* RolePickerController.swift */,
+				E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */,
+				E0D5CB411ED6291600FF3846 /* MessageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -540,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06B5ADE1E95B9AB00A5DAC3 /* ViewController.swift in Sources */,
+				E0D5CB3E1ED5FF9D00FF3846 /* TabBarController.swift in Sources */,
 				E06B5ADC1E95B9AB00A5DAC3 /* AppDelegate.swift in Sources */,
 				E06B5B291E95BA7F00A5DAC3 /* RegisterController.swift in Sources */,
 				E06B5B0D1E95BA2B00A5DAC3 /* AddUserController.swift in Sources */,
@@ -551,6 +562,7 @@
 				E06B5B111E95BA3600A5DAC3 /* Cells.swift in Sources */,
 				E06B5B191E95BA4E00A5DAC3 /* DriverLocationController.swift in Sources */,
 				E06B5B2D1E95BA8F00A5DAC3 /* RolePickerController.swift in Sources */,
+				E0D5CB421ED6291600FF3846 /* MessageViewController.swift in Sources */,
 				E06B5B151E95BA3F00A5DAC3 /* DriverController.swift in Sources */,
 				E06B5B251E95BA7700A5DAC3 /* Models.swift in Sources */,
 			);
@@ -561,10 +573,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06B5B0E1E95BA2B00A5DAC3 /* AddUserController.swift in Sources */,
+				E0D5CB3F1ED5FF9D00FF3846 /* TabBarController.swift in Sources */,
 				E06B5B1E1E95BA5500A5DAC3 /* Extensions.swift in Sources */,
 				E06B5B1A1E95BA4E00A5DAC3 /* DriverLocationController.swift in Sources */,
 				E06B5B321E95BA9B00A5DAC3 /* RootViewController.swift in Sources */,
 				E06B5B261E95BA7700A5DAC3 /* Models.swift in Sources */,
+				E0D5CB431ED6291600FF3846 /* MessageViewController.swift in Sources */,
 				E06B5B161E95BA3F00A5DAC3 /* DriverController.swift in Sources */,
 				E06B5B121E95BA3600A5DAC3 /* Cells.swift in Sources */,
 				E06B5AF41E95B9AB00A5DAC3 /* iOS_persianTests.swift in Sources */,
@@ -580,10 +594,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06B5B0F1E95BA2B00A5DAC3 /* AddUserController.swift in Sources */,
+				E0D5CB401ED5FF9D00FF3846 /* TabBarController.swift in Sources */,
 				E06B5B1F1E95BA5500A5DAC3 /* Extensions.swift in Sources */,
 				E06B5B1B1E95BA4E00A5DAC3 /* DriverLocationController.swift in Sources */,
 				E06B5B331E95BA9B00A5DAC3 /* RootViewController.swift in Sources */,
 				E06B5B271E95BA7700A5DAC3 /* Models.swift in Sources */,
+				E0D5CB441ED6291600FF3846 /* MessageViewController.swift in Sources */,
 				E06B5B171E95BA3F00A5DAC3 /* DriverController.swift in Sources */,
 				E06B5B131E95BA3600A5DAC3 /* Cells.swift in Sources */,
 				E06B5AFF1E95B9AB00A5DAC3 /* iOS_persianUITests.swift in Sources */,

@@ -22,3 +22,10 @@ class DriverLocation: NSObject {
     var longitude: String?
     var uid: String?
 }
+
+class Message: NSObject {
+    var date: String?
+    var dispatcherId: String?
+    var dispatcherName: String?
+    var message: String?
+}

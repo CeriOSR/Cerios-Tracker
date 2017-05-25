@@ -65,10 +65,12 @@ class RolePickerController: UIViewController {
     func pushDriverOrDispatcher() {
         if self.driverOrDispatcherSegCon.selectedSegmentIndex == 0 {
             enterIntoDBIfNotExist(user: user, trackerId: "Dispatcher")
-            let layout = UICollectionViewFlowLayout()
-            let trackerController = TrackerController(collectionViewLayout: layout)
-            let navController1 = UINavigationController(rootViewController: trackerController)
-            self.present(navController1, animated: true, completion: nil)
+//            let layout = UICollectionViewFlowLayout()
+//            let trackerController = TrackerController(collectionViewLayout: layout)
+//            let navController1 = UINavigationController(rootViewController: trackerController)
+            let tabBarController = TabBarController()
+//            let navController1 = UINavigationController(rootViewController: tabBarController)
+            self.present(tabBarController, animated: true, completion: nil)
         } else {
             enterIntoDBIfNotExist(user: user, trackerId: "Pending dispatcher acceptance")
             let driverController = DriverController()

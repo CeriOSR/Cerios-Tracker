@@ -29,19 +29,27 @@ class RootViewController: UIViewController {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}
         FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let dictionary = snapshot.value as? [String: AnyObject]
+            let user = User()
+            user.email = dictionary?["email"] as? String
+            user.fbId = dictionary?["fbId"] as? String
+            user.name = dictionary?["name"] as? String
+            user.userId = uid
+            user.trackerId = dictionary?["trackerId"] as? String
             
-            guard let trackerId = dictionary?["trackerId"] as! String? else {return}
+            print(user.trackerId!, user.name!)
+            
+            guard let trackerId = user.trackerId else {return}
             if trackerId == "Dispatcher" {
-                let layout = UICollectionViewFlowLayout()
-                let trackerController = TrackerController(collectionViewLayout: layout)
-                let navController1 = UINavigationController(rootViewController: trackerController)
-                self.present(navController1, animated: true, completion: nil)
+                let tabBarController = TabBarController()
+                let trackerController = TrackerController()
+                trackerController.user = user
+                trackerController.rootViewController = self
+                self.present(tabBarController, animated: true, completion: nil)
             } else {
                 let driverController = DriverController()
                 driverController.trackerId = trackerId
                 let navController2 = UINavigationController(rootViewController: driverController)
                 self.present(navController2, animated: true, completion: nil)
-                //self.createAlert(title: "Not Authorized.", message: "Please log in as a dispatcher")
             }
         }, withCancel: nil)
     }

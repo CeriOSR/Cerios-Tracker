@@ -11,6 +11,7 @@ import Firebase
 
 class AddUserController: UIViewController {
     
+    var user = User()
     let driver = User()
     let uid = FIRAuth.auth()?.currentUser?.uid
     var tracker: User? {
