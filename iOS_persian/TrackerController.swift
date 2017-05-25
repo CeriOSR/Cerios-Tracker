@@ -34,9 +34,9 @@ class TrackerController: UICollectionViewController, UICollectionViewDelegateFlo
         
         collectionView?.backgroundColor = .white
         collectionView?.register(DispatcherCell.self, forCellWithReuseIdentifier: cellId)
-        navigationController?.isNavigationBarHidden = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleMessageView))
+//        navigationController?.isNavigationBarHidden = false
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleMessageView))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,42 +113,42 @@ class TrackerController: UICollectionViewController, UICollectionViewDelegateFlo
         self.present(alert, animated: true, completion: nil)
     }
     
-    func handleLogout() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch let err {
-            print(err)
-            return
-        }
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        let loginController = LoginController()
-        present(loginController, animated: true, completion: nil)
-    }
-    
-    func handleRegisterButton() {
-        let registerController = RegisterController()
-        let navController = UINavigationController(rootViewController: registerController)
-        present(navController, animated: true, completion: nil)
-    }
-    
-    func handleMessageView() {
-        let layout = UICollectionViewFlowLayout()
-        print("handleMessage function", user?.email)
-
-        guard let currentUser = user else {return}
-        let messageViewController = MessageViewController(collectionViewLayout: layout)
-        messageViewController.currentUser = currentUser
-        messageViewController.trackerController = self
-        let messageNavController = UINavigationController(rootViewController: messageViewController)
-        self.present(messageNavController, animated: true, completion: nil)
-        
+//    func handleLogout() {
+//        do {
+//            try FIRAuth.auth()?.signOut()
+//        } catch let err {
+//            print(err)
+//            return
+//        }
+//        let loginManager = FBSDKLoginManager()
+//        loginManager.logOut()
+//        let loginController = LoginController()
+//        present(loginController, animated: true, completion: nil)
+//    }
+//    
+//    func handleRegisterButton() {
+//        let registerController = RegisterController()
+//        let navController = UINavigationController(rootViewController: registerController)
+//        present(navController, animated: true, completion: nil)
+//    }
+//    
+//    func handleMessageView() {
 //        let layout = UICollectionViewFlowLayout()
-//        let controller = MessageViewController(collectionViewLayout: layout)
-//        controller.user = user
-//        controller.trackerController = self
-//        self.navigationController?.pushViewController(controller, animated: true)
-    }
+//        print("handleMessage function", user?.email)
+//
+//        guard let currentUser = user else {return}
+//        let messageViewController = MessageViewController(collectionViewLayout: layout)
+//        messageViewController.currentUser = currentUser
+//        messageViewController.trackerController = self
+//        let messageNavController = UINavigationController(rootViewController: messageViewController)
+//        self.present(messageNavController, animated: true, completion: nil)
+//        
+////        let layout = UICollectionViewFlowLayout()
+////        let controller = MessageViewController(collectionViewLayout: layout)
+////        controller.user = user
+////        controller.trackerController = self
+////        self.navigationController?.pushViewController(controller, animated: true)
+//    }
     
     func fetchDrivers() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {return}

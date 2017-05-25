@@ -41,10 +41,15 @@ class RootViewController: UIViewController {
             guard let trackerId = user.trackerId else {return}
             if trackerId == "Dispatcher" {
                 let tabBarController = TabBarController()
-                let trackerController = TrackerController()
-                trackerController.user = user
-                trackerController.rootViewController = self
-                self.present(tabBarController, animated: true, completion: nil)
+//                let trackerController = TrackerController()
+//                trackerController.user = user
+//                trackerController.rootViewController = self
+                
+                
+                tabBarController.currentUser = user
+                tabBarController.rootViewController = self
+                let tabBarNavController = UINavigationController(rootViewController: tabBarController)
+                self.present(tabBarNavController, animated: true, completion: nil)
             } else {
                 let driverController = DriverController()
                 driverController.trackerId = trackerId

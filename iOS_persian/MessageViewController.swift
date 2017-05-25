@@ -125,9 +125,8 @@ class MessageViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func handleBack() {
-        let layout = UICollectionViewFlowLayout()
-        let trackerController = TrackerController(collectionViewLayout: layout)
-        let navController = UINavigationController(rootViewController: trackerController)
+        let tabBarController = TabBarController()
+        let navController = UINavigationController(rootViewController: tabBarController)
         self.present(navController, animated: true, completion: nil)
     }
     
