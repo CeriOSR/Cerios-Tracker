@@ -66,6 +66,51 @@ class DispatcherCell: BaseCell {
         activeLabel.text = nil
         activeLabel.textColor = .black
     }
-    
 }
+    
+class MessageCell: BaseCell {
+        
+    let messageLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .blue
+        return label
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .red
+        return label
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.backgroundColor = .yellow
+        return label
+    }()
+        
+    override func setupViews() {
+        addSubview(messageLabel)
+        addSubview(nameLabel)
+        addSubview(dateLabel)
+        
+        addConstraintsWithVisualFormat(format: "H:|[v0(200)]-2-[v1]-2-|", views: nameLabel, dateLabel)
+        addConstraintsWithVisualFormat(format: "H:|[v0]|", views: messageLabel)
+        
+        addConstraintsWithVisualFormat(format: "V:|[v0(45)]", views: nameLabel)
+        addConstraintsWithVisualFormat(format: "V:|[v0(45)]", views: dateLabel)
+        addConstraintsWithVisualFormat(format: "V:[v0(150)]|", views: messageLabel)
+
+
+    }
+    
+    override func prepareForReuse() {
+        nameLabel.text = nil
+        dateLabel.text = nil
+        messageLabel.text = nil
+    }
+        
+}
+    
+
 
