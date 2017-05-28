@@ -18,7 +18,6 @@ class MessageViewController: UICollectionViewController, UICollectionViewDelegat
     var currentUser: User? {
         didSet{
             navigationItem.title = currentUser?.name
-            print("message", currentUser?.name)
         }
     }
     
@@ -116,9 +115,6 @@ class MessageViewController: UICollectionViewController, UICollectionViewDelegat
         cell.nameLabel.text = message.dispatcherName
         cell.messageLabel.text = message.message
         
-        
-        
-        
         return cell
     }
     
@@ -160,8 +156,6 @@ class MessageViewController: UICollectionViewController, UICollectionViewDelegat
                 })
             }, withCancel: nil)
         }, withCancel: nil)
-        
-    
     }
     
     func handleBack() {

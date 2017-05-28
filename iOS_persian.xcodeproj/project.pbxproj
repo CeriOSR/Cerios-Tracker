@@ -60,6 +60,9 @@
 		E0D5CB421ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
 		E0D5CB431ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
 		E0D5CB441ED6291600FF3846 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5CB411ED6291600FF3846 /* MessageViewController.swift */; };
+		E0E959DF1ED9C93100B4361B /* EmailPhoneLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E959DE1ED9C93100B4361B /* EmailPhoneLoginController.swift */; };
+		E0E959E01ED9C93F00B4361B /* EmailPhoneLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E959DE1ED9C93100B4361B /* EmailPhoneLoginController.swift */; };
+		E0E959E11ED9C94000B4361B /* EmailPhoneLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E959DE1ED9C93100B4361B /* EmailPhoneLoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,7 @@
 		E06B5B381E95BC1100A5DAC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E0D5CB411ED6291600FF3846 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		E0E959DE1ED9C93100B4361B /* EmailPhoneLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailPhoneLoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,7 @@
 				E06B5B2C1E95BA8F00A5DAC3 /* RolePickerController.swift */,
 				E0D5CB3D1ED5FF9D00FF3846 /* TabBarController.swift */,
 				E0D5CB411ED6291600FF3846 /* MessageViewController.swift */,
+				E0E959DE1ED9C93100B4361B /* EmailPhoneLoginController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				E06B5B2D1E95BA8F00A5DAC3 /* RolePickerController.swift in Sources */,
 				E0D5CB421ED6291600FF3846 /* MessageViewController.swift in Sources */,
 				E06B5B151E95BA3F00A5DAC3 /* DriverController.swift in Sources */,
+				E0E959DF1ED9C93100B4361B /* EmailPhoneLoginController.swift in Sources */,
 				E06B5B251E95BA7700A5DAC3 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +589,7 @@
 				E06B5B121E95BA3600A5DAC3 /* Cells.swift in Sources */,
 				E06B5AF41E95B9AB00A5DAC3 /* iOS_persianTests.swift in Sources */,
 				E06B5B221E95BA7100A5DAC3 /* LoginController.swift in Sources */,
+				E0E959E01ED9C93F00B4361B /* EmailPhoneLoginController.swift in Sources */,
 				E06B5B2A1E95BA7F00A5DAC3 /* RegisterController.swift in Sources */,
 				E06B5B361E95BAEF00A5DAC3 /* TrackerController.swift in Sources */,
 				E06B5B2E1E95BA8F00A5DAC3 /* RolePickerController.swift in Sources */,
@@ -604,6 +611,7 @@
 				E06B5B131E95BA3600A5DAC3 /* Cells.swift in Sources */,
 				E06B5AFF1E95B9AB00A5DAC3 /* iOS_persianUITests.swift in Sources */,
 				E06B5B231E95BA7100A5DAC3 /* LoginController.swift in Sources */,
+				E0E959E11ED9C94000B4361B /* EmailPhoneLoginController.swift in Sources */,
 				E06B5B2B1E95BA7F00A5DAC3 /* RegisterController.swift in Sources */,
 				E06B5B371E95BAEF00A5DAC3 /* TrackerController.swift in Sources */,
 				E06B5B2F1E95BA8F00A5DAC3 /* RolePickerController.swift in Sources */,

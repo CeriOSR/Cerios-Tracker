@@ -61,20 +61,10 @@ class TabBarController: UITabBarController {
     
     func handleMessageView() {
         let layout = UICollectionViewFlowLayout()
-        print("handleMessage function", currentUser?.email)
-        
-//        guard let currentUser = user else {return}
         let messageViewController = MessageViewController(collectionViewLayout: layout)
         messageViewController.currentUser = currentUser
-//        messageViewController.trackerController = self
         let messageNavController = UINavigationController(rootViewController: messageViewController)
         self.present(messageNavController, animated: true, completion: nil)
-        
-        //        let layout = UICollectionViewFlowLayout()
-        //        let controller = MessageViewController(collectionViewLayout: layout)
-        //        controller.user = user
-        //        controller.trackerController = self
-        //        self.navigationController?.pushViewController(controller, animated: true)
     }
 
 

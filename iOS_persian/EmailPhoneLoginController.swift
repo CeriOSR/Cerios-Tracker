@@ -1,16 +1,15 @@
 //
-//  LoginController.swift
-//  CeriosDrivr
+//  EmailPhoneLoginController.swift
+//  iOS_persian
 //
-//  Created by Rey Cerio on 2017-02-27.
+//  Created by Rey Cerio on 2017-05-27.
 //  Copyright © 2017 CeriOS. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import FBSDKLoginKit
 
-class LoginController: UIViewController, FBSDKLoginButtonDelegate {
+class EmailPhoneLoginController: UIViewController {
 
     let emailTextField: UITextField = {
         let tf = UITextField()
@@ -23,7 +22,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         tf.layer.masksToBounds = true
         return tf
     }()
-
+    
     let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.isSecureTextEntry = true
@@ -73,25 +72,10 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         tf.isHidden = false
         return tf
     }()
-
-    let fbLoginButton = FBSDKLoginButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch { return }
-        view.backgroundColor = .white
-        setupViews()
-        trackerEmailTextField.isHidden = true
-        fbLoginButton.delegate = self
-        fbLoginButton.readPermissions = ["email", "public_profile"]
-    }
 
-    func setupViews() {
-        navigationController?.isNavigationBarHidden = true
-        view.addSubview(fbLoginButton)
-        fbLoginButton.frame = CGRect(x: 16, y: 250, width: view.frame.width - 32, height: 50)
     }
     
     func hideTrackerEmailTextField() {
@@ -120,7 +104,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 let dictionary = snapshot.value as? [String: AnyObject]
                 let user = User()
                 user.trackerId = dictionary?["trackerId"] as! String?
-                if user.trackerId == "Company Owner" {
+                if user.trackerId == "Dispatcher" {
                     let layout = UICollectionViewFlowLayout()
                     let trackerController = TrackerController(collectionViewLayout: layout)
                     let navController1 = UINavigationController(rootViewController: trackerController)
@@ -133,55 +117,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             }, withCancel: nil)
         })
-    }
-    
-    func createAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            //self.dismiss(animated: true, completion: nil)
-            return
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    //fb delegates
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if error != nil {
-            print(error)
-            return
-        }
-        fbGraphRequestThenAuthenticateAndStore()
-        print("Successfully logged in with facebook!!!!!")
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("Did log out of facebook!!!!")
-    }
-    
-    func fbGraphRequestThenAuthenticateAndStore() {
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
-            if error != nil {
-                print(error ?? "unknown error")
-                return
-            }
-            let dictionary = result as? [String: AnyObject]
-            let newUser = User()
-            newUser.email = dictionary?["email"] as? String
-            newUser.name = dictionary?["name"] as? String
-            newUser.fbId = dictionary?["id"] as? String
-            
-            let accessToken = FBSDKAccessToken.current()
-            guard let accessTokenString = accessToken?.tokenString else {return}
-            let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
-            FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
-                if error != nil {
-                    print("Could not log into Firebase", error ?? "unknown error")
-                    return
-                }
-                print("Successfully logged into Firebase", user ?? "unknown user")
-                self.checkIfUserExistInDBAndPushToRootOrRoleControllers(user: newUser)
-            })
-        }
     }
     
     func checkIfUserExistInDBAndPushToRootOrRoleControllers(user: User) {
@@ -203,5 +138,15 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }, withCancel: nil)
     }
-}
+    
+    func createAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            //self.dismiss(animated: true, completion: nil)
+            return
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 
+
+}
